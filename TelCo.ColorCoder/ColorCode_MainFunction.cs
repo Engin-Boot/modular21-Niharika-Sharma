@@ -6,6 +6,7 @@ namespace TelCo.ColorCoder
 {
     partial class Program
     {
+        
         /// <summary>
         /// Test code for the class
         /// </summary>
@@ -40,8 +41,9 @@ namespace TelCo.ColorCoder
             Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}\n", testPair2, pairNumber);
             Debug.Assert(pairNumber == 6);
 
-
-            Program.PrintAllPairNumbersAndColorNames();
+            //The Program should print all pair combinations, i.e 25
+            int numberofPairs = Program.PrintAllPairNumbersAndColorNames();
+            Debug.Assert(numberofPairs == 25);
         }
     }
 }

@@ -13,27 +13,35 @@ namespace TelCo.ColorCoder
         /// <returns></returns>
         private static int GetPairNumberFromColor(ColorPair pair)
         {
-            // Find the major color in the array and get the index
-            int majorIndex = -1;
-            for (int i = 0; i < colorMapMajor.Length; i++)
+            //as colorMapMajor.Length = colorMapMinor.Length = 5
+            int maxIndexOfColorMap = colorMapMajor.Length;
+
+            // Find the major and minor color in the array and get the index
+            int majorIndex = -1, minorIndex = -1;
+            bool isMajorIndexNotFound = true, isMinorIndexNotFound = true;
+
+            for (int i = 0; i < maxIndexOfColorMap ; i++)
             {
-                if (colorMapMajor[i] == pair.majorColor)
+                if (isMajorIndexNotFound)
                 {
-                    majorIndex = i;
-                    break;
+                    if (colorMapMajor[i] == pair.majorColor)
+                    {
+                        majorIndex = i;
+                        isMajorIndexNotFound = false;
+                        break;
+                    }
+                }
+
+                if (isMinorIndexNotFound)
+                {
+                    if (colorMapMinor[i] == pair.minorColor)
+                    {
+                        minorIndex = i;
+                        isMinorIndexNotFound = false;
+                    }
                 }
             }
 
-            // Find the minor color in the array and get the index
-            int minorIndex = -1;
-            for (int i = 0; i < colorMapMinor.Length; i++)
-            {
-                if (colorMapMinor[i] == pair.minorColor)
-                {
-                    minorIndex = i;
-                    break;
-                }
-            }
             // If colors can not be found throw an exception
             if (majorIndex == -1 || minorIndex == -1)
             {
@@ -45,7 +53,7 @@ namespace TelCo.ColorCoder
             // (Note: +1 in compute is because pair number is 1 based, not zero)
             return (majorIndex * colorMapMinor.Length) + (minorIndex + 1);
         }
-        
+
     }
 
 }
