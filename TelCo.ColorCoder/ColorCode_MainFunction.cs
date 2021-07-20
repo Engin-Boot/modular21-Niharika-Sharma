@@ -5,12 +5,11 @@ using System.Drawing;
 namespace TelCo.ColorCoder
 {
     partial class Program
-    {
-        
-        /// <summary>
-        /// Test code for the class
-        /// </summary>
-        /// <param name="args"></param>
+    {        
+        // / <summary>
+        // / Test code for the class
+        // / </summary>
+        // / <param name="args"></param>
         private static void Main(string[] args)
         {
             int pairNumber = 4;
@@ -41,9 +40,19 @@ namespace TelCo.ColorCoder
             Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}\n", testPair2, pairNumber);
             Debug.Assert(pairNumber == 6);
 
-            //The Program should print all pair combinations, i.e 25
-            int numberofPairs = Program.PrintAllPairNumbersAndColorNames();
-            Debug.Assert(numberofPairs == 25);
+            //////////-----------Mannual Testing-----------/////////////
+
+            Console.WriteLine("-------------\nPrinting the content\n-------------");
+           
+            var printmanual = new PrintManualOnConsole();
+            Program.PrintManual(printmanual);           
+            
+            Console.WriteLine("-------------\nTesting the content\n-------------");            
+
+            var grabber = new ManualContentGrabber();
+            Program.PrintManual(grabber);
+            
+            
         }
     }
 }
