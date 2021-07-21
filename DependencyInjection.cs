@@ -25,8 +25,9 @@ namespace TelCo.ColorCoder
         static int index = 0;
         public void printALine(string line)
         {
-            Console.WriteLine(line.Equals(rowsOfEntry[index]));
+            Debug.Assert((line.Equals(rowsOfEntry[index])));            
             index++;
+            Console.WriteLine("Pair: "+ index + " Test Case Passed");
         }        
     }
 
@@ -38,7 +39,7 @@ namespace TelCo.ColorCoder
 
             string line;
             int counter = 0;
-            System.IO.StreamReader file = new System.IO.StreamReader("PrintManual1.txt");
+            System.IO.StreamReader file = new System.IO.StreamReader("PrintManual.txt");
             while ((line = file.ReadLine()) != null)
             {
                 

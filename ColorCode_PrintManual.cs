@@ -11,7 +11,6 @@ namespace TelCo.ColorCoder
          static void PrintManual(IManualOutput destination)
         {
             int totalNumberOfPairs = colorMapMinor.Length * colorMapMajor.Length;
-            Console.WriteLine("List of all Pair Numbers and their Corresponding Colors:\n");
             string rowEntryToPrint = "";
 
             for (int currentPairNumber = 1; currentPairNumber <= totalNumberOfPairs; currentPairNumber++)
